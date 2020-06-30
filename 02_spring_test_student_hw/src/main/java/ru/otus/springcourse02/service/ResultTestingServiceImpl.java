@@ -25,12 +25,12 @@ public class ResultTestingServiceImpl implements ResultTestingService {
     @Override
     public void getResult() {
         System.out.println(messageSource.getMessage("resultTestingService.NUM_OF_RIGHT_ANSWER", null, local) + " " + correctAnswerCount);
-        for (String correctAnswer : correctAnswerArrayList) {
-            if (correctAnswer.equals("")) {
-                System.out.println(messageSource.getMessage("resultTestingService.RIGHT_ANSWER", null, local));
+        for (int i = 0; i < correctAnswerArrayList.size(); i++) {
+            if (correctAnswerArrayList.get(i).equals("")) {
+                System.out.println((i+ 1)+ ")" + " " + messageSource.getMessage("resultTestingService.RIGHT_ANSWER", null, local));
             } else {
-                System.out.println(messageSource.getMessage("resultTestingService.WRONG_ANSWER", null, local) + " " +
-                        messageSource.getMessage("resultTestingService.RIGHT_ANSWER", null, local) + " -> " + correctAnswer);
+                System.out.println((i+ 1) + ")" + " " + messageSource.getMessage(  "resultTestingService.WRONG_ANSWER", null, local) + " " +
+                        messageSource.getMessage("resultTestingService.RIGHT_ANSWER", null, local) + " -> " + correctAnswerArrayList.get(i));
             }
         }
     }

@@ -11,7 +11,7 @@ import ru.otus.springcourse02.service.StartTestingService;
 @PropertySource("classpath:application.properties")
 public class Main {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Main.class);
 
         StartTestingService startTestingService = context.getBean(StartTestingService.class);
