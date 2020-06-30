@@ -34,7 +34,6 @@ public class StartTestingServiceImpl implements StartTestingService {
             @Qualifier("resultTestingServiceImpl") ResultTestingService resultTestingService,
             @Value("${application.locale}") Locale locale,
             MessageSource messageSource
-
     ) {
         this.questionDao = questionDao;
         this.resultTestingService = resultTestingService;
@@ -43,44 +42,45 @@ public class StartTestingServiceImpl implements StartTestingService {
     }
 
     @Override
-    public void startTesting() throws Exception {
-        ArrayList<Question> questionArrayList = questionDao.readFile();
+    public void startTesting() {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in))) {
+            ArrayList<Question> questionArrayList = questionDao.readFile();
             getFullName(bufferedReader);
-            for (Question question : questionArrayList) {
-                System.out.println(question.getQuestion() + QUESTION_MARK);
-                System.out.println(messageSource.getMessage("startTestingService.ENTER_ANSWER",null,locale));
-                resultTestingService.checkAnswer(question.getAnswer(), getAnswerFromStudent(bufferedReader));
+            for (int i = 0; i < questionArrayList.size(); i++) {
+                System.out.println((i + 1) + ")" + " " + questionArrayList.get(i).getQuestion() + QUESTION_MARK);
+                System.out.println(messageSource.getMessage("startTestingService.ENTER_ANSWER", null, locale));
+                resultTestingService.checkAnswer(questionArrayList.get(i).getAnswer(), getAnswerFromStudent(bufferedReader));
             }
-        } catch (IOException e) {
+            System.out.println(student.getFirstname() + " " + student.getLastname() +
+                    messageSource.getMessage("startTestingService.END_TESTING", null, locale));
+            resultTestingService.getResult();
+        } catch (IOException | ExceptionServiceConsole e) {
             System.out.println(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        System.out.println(student.getFirstname() + " " + student.getLastname() +
-                messageSource.getMessage("startTestingService.END_TESTING",null,locale));
-        resultTestingService.getResult();
     }
 
-    @Override
-    public void getFullName(BufferedReader bufferedReader) throws ExceptionServiceConsole, IOException {
-        bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println(messageSource.getMessage("startTestingService.WELCOME",null,locale));
-        System.out.println(messageSource.getMessage("startTestingService.ENTER_FIRSTNAME",null,locale));
+
+    private void getFullName(BufferedReader bufferedReader) throws ExceptionServiceConsole, IOException {
+        System.out.println(messageSource.getMessage("startTestingService.WELCOME", null, locale));
+        System.out.println(messageSource.getMessage("startTestingService.ENTER_FIRSTNAME", null, locale));
         String firstname = getAnswerFromStudent(bufferedReader);
-        System.out.println(messageSource.getMessage("startTestingService.ENTER_LASTNAME",null,locale));
+        System.out.println(messageSource.getMessage("startTestingService.ENTER_LASTNAME", null, locale));
         String lastname = getAnswerFromStudent(bufferedReader);
         student = new Student(firstname, lastname);
     }
 
-    @Override
+
     public String getAnswerFromStudent(BufferedReader bufferedReader) throws ExceptionServiceConsole, IOException {
         try {
             String line = bufferedReader.readLine();
             if (line.isEmpty()) {
-                throw new ExceptionServiceConsole(messageSource.getMessage("startTestingService.INPUT_ERROR",null,locale));
+                throw new ExceptionServiceConsole(messageSource.getMessage("startTestingService.INPUT_ERROR", null, locale));
             }
             return line;
         } catch (IOException exception) {
-            throw new IOException(messageSource.getMessage("startTestingService.IOException",null,locale));
+            throw new IOException(messageSource.getMessage("startTestingService.IOException", null, locale));
         } catch (Exception exception) {
             throw new ExceptionServiceConsole(exception.getMessage());
         }
