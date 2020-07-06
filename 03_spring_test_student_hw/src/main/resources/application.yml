@@ -1,0 +1,3 @@
+application:
+  locale: ru
+  path: src/main/resources/questions_ru.csv
