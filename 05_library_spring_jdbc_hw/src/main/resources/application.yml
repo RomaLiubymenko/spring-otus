@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    username: dbuser
+    password: dbuser
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://VDBS;database=Library
+    initialization-mode: always
