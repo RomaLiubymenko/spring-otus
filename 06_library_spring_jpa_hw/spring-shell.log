@@ -1,0 +1,107 @@
+1594932386689:help
+1594932444738:a
+1594932453789:showA
+1594932473910:stacktrace
+1594932671690:exit
+1594932878910:help
+1594932882852:showA
+1594932978187:exit
+1594934390353:showA
+1594934411602:showB
+1594934417474:help
+1594934433915:showAbyid --id 1
+1594934475632:exit
+1594935533576:help
+1594935540081:showA
+1594935602957:showPH
+1594935653684:showB
+1594935681869:showG
+1594935690512:exit
+1594936000074:S
+1594936004589:showA
+1594936012952:exit
+1594936180697:ashowA
+1594936186907:showA
+1594936193955:stacktrace
+1594936324093:showB
+1594936329895:showG
+1594936340835:exit
+1594937321643:help
+1594937326774:showA
+1594937337558:showG
+1594937352515:help
+1594937369419:showBbyid --id 6
+1594937376761:showBbyid --id 2
+1594937381253:showBbyid --id 1
+1594937390278:showB
+1594937399220:exit
+1594938056131:showA
+1594938086482:showG
+1594938096920:showPH
+1594938108771:exit
+1594940934772:showA
+1594940943204:showC
+1594940952426:showB
+1594940961027:exit
+1594990555799:shshowA
+1594990562109:showA
+1594990698183:showB
+1594990744043:exit
+1594990786670:sh
+1594990789950:showA
+1594990799692:showB
+1594990805965:exit
+1594991889193:showA
+1594991894843:showB
+1594991925711:exit
+1594992177829:show
+1594992180540:showG
+1594992187324:showPH
+1594992196074:showB
+1594992272025:insertB --id-author 1 --id-genre 1 --id-publishing-house 1 --title dsf --publication-year 1999 --number-of-pages 233
+1594992295021:insertB --id-author 1 --id-genre 1 --id-publishing-house 1 --title dsf --publication-year 1999-01-01 --number-of-pages 233-
+1594992298270:insertB --id-author 1 --id-genre 1 --id-publishing-house 1 --title dsf --publication-year 1999-01-01 --number-of-pages 233
+1594992313146:stacktrace
+1594992330916:exit
+1594999805581:showA
+1594999811404:exit
+1595000000987:show
+1595000005261:showA
+1595000015286:exit
+1595002065305:showA
+1595002085353:showB
+1595002131844:insertA --firstname dasd --lastname asd --country asd
+1595002148842:stacktrace
+1595002330762:exit
+1595002532078:showB
+1595002542578:showA
+1595002550503:showC
+1595002594051:exit
+1595002666076:showA
+1595002671761:showC
+1595002776799:exit
+1595002960845:showA
+1595002965852:showG
+1595002971324:showC
+1595003001506:showPH
+1595003012748:showAbyid --id 1
+1595003020729:showAbyid --id 5
+1595003033802:showBbyid --id 21
+1595003037266:showBbyid --id 1
+1595003091601:insA
+1595003112635:insA --firstname xcv --lastname sad --country sfafd
+1595003117028:showA
+1595003131913:delA
+1595003142713:insB
+1595003205529:insB --id-author 2 --id-genre --2 --id-publishing-house 1 --title dfgdgfd --publication-year 1999:01:01 --number-of-pages 2134
+1595003224388:insB --id-author 2 --id-genre 2 --id-publishing-house 1 --title dfgdgfd --publication-year 1999:01:01 --number-of-pages 2134
+1595003234628:insB --id-author 2 --id-genre 2 --id-publishing-house 1 --title dfgdgfd --publication-year 1999 --number-of-pages 2134
+1595003255373:insB --id-author 2 --id-genre 2 --id-publishing-house 1 --title dfgdgfd --publication-year 1999-01-01 --number-of-pages 2134
+1595003261223:showB
+1595003276982:insB --id-author 2 --id-genre 2 --id-publishing-house 200 --title dfgdgfd --publication-year 1999-01-01 --number-of-pages 2134
+1595003303251:exit
+1595006900091:d
+1595006903951:showC
+1595006916252:showCbyid --id 2
+1595006932623:help
+1595006944227:exit
