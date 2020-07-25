@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book page</title>
+    <link rel="stylesheet" href="../static/style.css" th:href="@{../style.css}">
+</head>
+<body>
+<table>
+    <caption>Book Table</caption>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>First name author</th>
+        <th>Last name author</th>
+        <th>Name genre</th>
+        <th>Name publishing house</th>
+        <th>Title</th>
+        <th>Publication Year</th>
+        <th>Number Of Pages</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="bookDto : ${bookDtos}" th:object="${bookDto}">
+        <td th:text="*{id}"></td>
+        <td th:text="*{authorDto.firstname}"></td>
+        <td th:text="*{authorDto.lastname}"></td>
+        <td th:text="*{genreDto.nameGenre}"></td>
+        <td th:text="*{publishingHouseDto.publishingName}"></td>
+        <td th:text="*{title}" ></td>
+        <td th:text="*{publicationYear}" ></td>
+        <td th:text="*{numberOfPages}" ></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

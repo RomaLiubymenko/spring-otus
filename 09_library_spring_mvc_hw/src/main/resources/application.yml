@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    username: dbuser
+    password: dbuser
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://VDBS;database=Library
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+  thymeleaf:
+    cache: false
+welcome:
+  massage: This is a main page. This page in the future will not be so primitive =)
