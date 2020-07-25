@@ -1,0 +1,21 @@
+body {
+    font-family: Droid Sans Mono Dotted, monospace;
+    font-size: 18px;
+}
+table {
+    border: 1px solid grey;;
+    width: 100%;
+}
+caption {
+    background-color: darkorchid;
+}
+thead {
+    background-color: cornflowerblue;
+}
+tbody {
+    background-color: deepskyblue;
+}
+td, th {
+    text-align: left;
+}
+
