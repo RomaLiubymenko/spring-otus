@@ -1,6 +1,5 @@
 package ru.otus.springcourse06.repository;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
@@ -16,11 +15,14 @@ import java.util.List;
 
 @Repository
 @Transactional
-@RequiredArgsConstructor
 @Scope(proxyMode = ScopedProxyMode.INTERFACES)
 public class CommentsRepositoryJpaImpl implements CommentsRepository {
 
     private final EntityManager entityManager;
+
+    public CommentsRepositoryJpaImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     @Override
     public void insert(Comment comment) {

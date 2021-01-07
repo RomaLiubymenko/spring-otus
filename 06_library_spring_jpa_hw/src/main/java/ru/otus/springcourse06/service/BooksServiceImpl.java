@@ -1,6 +1,5 @@
 package ru.otus.springcourse06.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.otus.springcourse06.domain.Book;
 import ru.otus.springcourse06.repository.BooksRepository;
@@ -9,10 +8,13 @@ import java.sql.Date;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class BooksServiceImpl implements BooksService {
 
     private final BooksRepository booksRepository;
+
+    public BooksServiceImpl(BooksRepository booksRepository) {
+        this.booksRepository = booksRepository;
+    }
 
     @Override
     public void insertBook(Book book) {

@@ -1,30 +1,31 @@
 package ru.otus.springcourse09.dto.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+import org.springframework.stereotype.Service;
 import ru.otus.springcourse09.dto.CommentDto;
 import ru.otus.springcourse09.model.Comment;
 
 import java.util.List;
 
-@Mapper
-public interface CommentMapper {
+@Service
+public class CommentMapper implements AbstractMapper<CommentDto, Comment> {
 
-    @Mappings({
-            @Mapping(source = "idComment", target = "id"),
-            @Mapping(source = "book", target = "bookDto"),
-            @Mapping(source = "publicationTime", target = "publicationTime", dateFormat = "yyyy-MM-dd HH:mm")
-    })
-    CommentDto commentToCommentDto(Comment comment);
+    @Override
+    public Comment toEntity(CommentDto commentDto) {
+        return null;
+    }
 
-    @Mappings({
-            @Mapping(source = "id", target = "idComment"),
-            @Mapping(source = "bookDto", target = "book"),
-            @Mapping(source = "publicationTime", target = "publicationTime", dateFormat = "yyyy-MM-dd HH:mm")
-    })
-    Comment commentDtoToComment(CommentDto commentDto);
+    @Override
+    public CommentDto toDto(Comment comment) {
+        return null;
+    }
 
-    List<CommentDto> commentsToCommentDtos(List<Comment> commentList);
+    @Override
+    public List<Comment> toEntity(List<CommentDto> commentDtos) {
+        return null;
+    }
 
+    @Override
+    public List<CommentDto> toDto(List<Comment> comments) {
+        return null;
+    }
 }

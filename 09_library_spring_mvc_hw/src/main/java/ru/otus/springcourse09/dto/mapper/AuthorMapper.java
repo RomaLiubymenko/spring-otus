@@ -1,28 +1,33 @@
 package ru.otus.springcourse09.dto.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
-import ru.otus.springcourse09.model.Author;
+
+import org.springframework.stereotype.Service;
 import ru.otus.springcourse09.dto.AuthorDto;
+import ru.otus.springcourse09.model.Author;
 
 import java.util.List;
 
-@Mapper
-public interface AuthorMapper {
+@Service
+public class AuthorMapper implements AbstractMapper<AuthorDto, Author>  {
 
-    @Mappings({
-            @Mapping(source = "idAuthor", target = "id"),
-            @Mapping(source = "bookSet", target = "bookDtoSet")
-    })
-    AuthorDto authorToAuthorDto(Author author);
 
-    @Mappings({
-            @Mapping(source = "id", target = "idAuthor"),
-            @Mapping(source = "bookDtoSet", target = "bookSet")
-    })
-    Author authorDtoToAuthor(AuthorDto authorDto);
+    @Override
+    public Author toEntity(AuthorDto authorDto) {
+        return null;
+    }
 
-    List<AuthorDto> authorsToAuthorDtos(List<Author> authorList);
+    @Override
+    public AuthorDto toDto(Author author) {
+        return null;
+    }
 
+    @Override
+    public List<Author> toEntity(List<AuthorDto> authorDtos) {
+        return null;
+    }
+
+    @Override
+    public List<AuthorDto> toDto(List<Author> authors) {
+        return null;
+    }
 }

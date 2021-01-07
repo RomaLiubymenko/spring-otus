@@ -1,7 +1,5 @@
 package ru.otus.springcourse03.config;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -9,8 +7,6 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 
 import java.util.Locale;
 
-@Getter
-@Setter
 @ConfigurationProperties(prefix = "application")
 public class BasicConfiguration {
 
@@ -23,5 +19,21 @@ public class BasicConfiguration {
         messageSource.setBasename("/i18n/bundle");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public Locale getLocale() {
+        return locale;
+    }
+
+    public void setLocale(Locale locale) {
+        this.locale = locale;
     }
 }

@@ -1,6 +1,5 @@
 package ru.otus.springcourse07.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.springcourse07.domain.Comment;
@@ -11,10 +10,13 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-@RequiredArgsConstructor
 public class CommentsServiceImpl implements CommentsService {
 
     private final CommentsRepository commentsRepository;
+
+    public CommentsServiceImpl(CommentsRepository commentsRepository) {
+        this.commentsRepository = commentsRepository;
+    }
 
     @Override
     public void insertComment(Comment comment) {

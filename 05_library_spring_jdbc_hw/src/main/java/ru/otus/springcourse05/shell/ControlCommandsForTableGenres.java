@@ -1,6 +1,5 @@
 package ru.otus.springcourse05.shell;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.table.Table;
@@ -11,11 +10,15 @@ import java.util.Collections;
 import java.util.List;
 
 @ShellComponent
-@RequiredArgsConstructor
 public class ControlCommandsForTableGenres {
 
     private final GenresService genresService;
     private final TableShell tableShell;
+
+    public ControlCommandsForTableGenres(GenresService genresService, TableShell tableShell) {
+        this.genresService = genresService;
+        this.tableShell = tableShell;
+    }
 
     @ShellMethod(value = "Displays the entire table Genres", key = "showG")
     public Table showAllGenres(){

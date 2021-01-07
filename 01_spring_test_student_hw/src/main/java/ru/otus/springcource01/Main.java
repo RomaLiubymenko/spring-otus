@@ -10,6 +10,5 @@ public class Main {
         StartTestingService startTestingService = context.getBean("startTestingServiceBean", StartTestingService.class);
         startTestingService.startTesting();
         context.close();
-
     }
 }

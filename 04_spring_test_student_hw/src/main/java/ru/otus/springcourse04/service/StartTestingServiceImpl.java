@@ -1,7 +1,5 @@
 package ru.otus.springcourse04.service;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
@@ -13,7 +11,6 @@ import ru.otus.springcourse04.domain.Student;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -26,8 +23,6 @@ public class StartTestingServiceImpl implements StartTestingService {
     private final ResultTestingService resultTestingService;
     private final Locale locale;
     private final MessageSource messageSource;
-
-    @Getter
     private Student student;
 
     @Autowired
@@ -79,5 +74,10 @@ public class StartTestingServiceImpl implements StartTestingService {
             throw new IOException(messageSource.getMessage("startTestingService.somethingWentWrong", null, locale) +
                     messageSource.getMessage("startTestingService.IOException", null, locale));
         }
+    }
+
+    @Override
+    public Student getStudent() {
+        return student;
     }
 }

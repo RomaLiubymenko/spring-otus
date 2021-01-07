@@ -1,6 +1,5 @@
 package ru.otus.springcourse06.shell;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.table.Table;
@@ -13,12 +12,17 @@ import java.util.Collections;
 import java.util.List;
 
 @ShellComponent
-@RequiredArgsConstructor
 public class CommandsToControlTableComments {
 
     private final CommentsService commentsService;
     private final BooksService booksService;
     private final TableShell tableShell;
+
+    public CommandsToControlTableComments(CommentsService commentsService, BooksService booksService, TableShell tableShell) {
+        this.commentsService = commentsService;
+        this.booksService = booksService;
+        this.tableShell = tableShell;
+    }
 
     @ShellMethod(value = "Displays the entire table Comments", key = "showC")
     public Table showAllComments(){

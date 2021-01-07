@@ -15,6 +15,8 @@ import java.util.Set;
 @EqualsAndHashCode(of = {"idAuthor"})
 public class Author {
 
+    private String name;
+
     @Id
     @Column(name = "idAuthor")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +34,9 @@ public class Author {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "author", orphanRemoval = true)
     @ToString.Exclude
     private Set<Book> bookSet =  new HashSet<>();
+
+    public Author() {
+    }
 
     public void addBook(Book book){
         bookSet.add(book);

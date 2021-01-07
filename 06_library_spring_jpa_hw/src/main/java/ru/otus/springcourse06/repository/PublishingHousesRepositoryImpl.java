@@ -1,6 +1,5 @@
 package ru.otus.springcourse06.repository;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
@@ -13,12 +12,15 @@ import java.util.List;
 
 @Repository
 @Transactional
-@RequiredArgsConstructor
 @Scope(proxyMode = ScopedProxyMode.INTERFACES)
 public class PublishingHousesRepositoryImpl implements PublishingHousesRepository {
 
     @PersistenceContext
     private final EntityManager entityManager;
+
+    public PublishingHousesRepositoryImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
 
     @Override
     public List<PublishingHouse> getAll() {

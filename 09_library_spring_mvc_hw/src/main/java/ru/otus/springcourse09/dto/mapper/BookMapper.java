@@ -1,34 +1,31 @@
 package ru.otus.springcourse09.dto.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+import org.springframework.stereotype.Service;
 import ru.otus.springcourse09.dto.BookDto;
 import ru.otus.springcourse09.model.Book;
 
 import java.util.List;
 
-@Mapper
-public interface BookMapper {
-    @Mappings({
-            @Mapping(source = "idBook", target = "id"),
-            @Mapping(source = "commentSet", target = "commentDtoSet"),
-            @Mapping(source= "publicationYear", target = "publicationYear", dateFormat="yyyy-MM-dd"),
-            @Mapping(source = "author", target = "authorDto"),
-            @Mapping(source = "genre", target = "genreDto"),
-            @Mapping(source = "publishingHouse", target = "publishingHouseDto")
-    })
-    BookDto bookToBookDto(Book book);
+@Service
+public class BookMapper implements AbstractMapper<BookDto, Book> {
 
-    @Mappings({
-            @Mapping(target = "idBook", source = "id"),
-            @Mapping(target = "commentSet", source = "commentDtoSet"),
-            @Mapping(target= "publicationYear", source = "publicationYear", dateFormat="yyyy-MM-dd"),
-            @Mapping(source = "authorDto", target = "author"),
-            @Mapping(source = "genreDto", target = "genre"),
-            @Mapping(source = "publishingHouseDto", target = "publishingHouse")
-    })
-    Book bookDtoToBook(BookDto bookDto);
+    @Override
+    public Book toEntity(BookDto bookDto) {
+        return null;
+    }
 
-    List<BookDto> booksToBookDtos(List<Book> bookList);
+    @Override
+    public BookDto toDto(Book book) {
+        return null;
+    }
+
+    @Override
+    public List<Book> toEntity(List<BookDto> bookDtos) {
+        return null;
+    }
+
+    @Override
+    public List<BookDto> toDto(List<Book> books) {
+        return null;
+    }
 }

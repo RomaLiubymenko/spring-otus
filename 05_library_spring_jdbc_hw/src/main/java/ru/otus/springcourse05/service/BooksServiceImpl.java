@@ -1,6 +1,5 @@
 package ru.otus.springcourse05.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import ru.otus.springcourse05.dao.BooksDao;
@@ -10,13 +9,19 @@ import java.sql.Date;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class BooksServiceImpl implements BooksService {
 
     private final BooksDao booksDao;
     private final AuthorsService authorsService;
     private final GenresService genresService;
     private final PublishingHousesService publishingHousesService;
+
+    public BooksServiceImpl(BooksDao booksDao, AuthorsService authorsService, GenresService genresService, PublishingHousesService publishingHousesService) {
+        this.booksDao = booksDao;
+        this.authorsService = authorsService;
+        this.genresService = genresService;
+        this.publishingHousesService = publishingHousesService;
+    }
 
     @Override
     public String insertBook(Books book) {

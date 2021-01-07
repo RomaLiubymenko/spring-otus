@@ -1,6 +1,5 @@
 package ru.otus.springcourse07.shell;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.table.Table;
@@ -10,14 +9,12 @@ import ru.otus.springcourse07.service.BooksService;
 import ru.otus.springcourse07.service.GenresService;
 import ru.otus.springcourse07.service.PublishingHousesService;
 
-import java.util.Collections;
 import java.sql.Date;
+import java.util.Collections;
 import java.util.List;
 
 
-
 @ShellComponent
-@RequiredArgsConstructor
 public class CommandsToControlTableBooks {
 
     private final BooksService booksService;
@@ -25,6 +22,21 @@ public class CommandsToControlTableBooks {
     private final GenresService genresService;
     private final PublishingHousesService publishingHousesService;
     private final TableShell tableShell;
+
+    public CommandsToControlTableBooks(
+            BooksService booksService,
+            AuthorsService authorsService,
+            GenresService genresService,
+            PublishingHousesService publishingHousesService,
+            TableShell tableShell
+    ) {
+        this.booksService = booksService;
+        this.authorsService = authorsService;
+        this.genresService = genresService;
+        this.publishingHousesService = publishingHousesService;
+        this.tableShell = tableShell;
+    }
+
     @ShellMethod(value = "Displays the entire table Books", key = "showB")
     public Table showAllBooks() {
         List<Book> booksList = booksService.outputListOfBooks();

@@ -1,6 +1,5 @@
 package ru.otus.springcourse05.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import ru.otus.springcourse05.dao.AuthorsDao;
@@ -9,10 +8,13 @@ import ru.otus.springcourse05.domain.Authors;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class AuthorsServiceImpl implements AuthorsService {
 
     private final AuthorsDao authorsDao;
+
+    public AuthorsServiceImpl(AuthorsDao authorsDao) {
+        this.authorsDao = authorsDao;
+    }
 
     @Override
     public Authors getAuthorById(int id) {

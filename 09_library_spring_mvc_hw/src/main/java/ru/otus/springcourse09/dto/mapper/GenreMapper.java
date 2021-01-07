@@ -1,27 +1,31 @@
 package ru.otus.springcourse09.dto.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+import org.springframework.stereotype.Service;
 import ru.otus.springcourse09.dto.GenreDto;
 import ru.otus.springcourse09.model.Genre;
 
 import java.util.List;
 
-@Mapper
-public interface GenreMapper {
+@Service
+public class GenreMapper implements AbstractMapper<GenreDto, Genre> {
 
-    @Mappings({
-            @Mapping(source = "idGenre", target = "id"),
-            @Mapping(source = "bookSet", target = "bookDtoSet")
-    })
-    GenreDto genreToGenreDto(Genre genre);
+    @Override
+    public Genre toEntity(GenreDto genreDto) {
+        return null;
+    }
 
-    @Mappings({
-            @Mapping(source = "id", target = "idGenre"),
-            @Mapping(source = "bookDtoSet", target = "bookSet")
-    })
-    Genre genreDtoToGenre(GenreDto genreDto);
+    @Override
+    public GenreDto toDto(Genre genre) {
+        return null;
+    }
 
-    List<GenreDto> genresToGenreDtos(List<Genre> genreList);
+    @Override
+    public List<Genre> toEntity(List<GenreDto> genreDtos) {
+        return null;
+    }
+
+    @Override
+    public List<GenreDto> toDto(List<Genre> genres) {
+        return null;
+    }
 }

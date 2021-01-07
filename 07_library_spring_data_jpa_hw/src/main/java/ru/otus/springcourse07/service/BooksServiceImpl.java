@@ -1,6 +1,5 @@
 package ru.otus.springcourse07.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.springcourse07.domain.Book;
@@ -11,10 +10,13 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-@RequiredArgsConstructor
 public class BooksServiceImpl implements BooksService {
 
     private final BooksRepository booksRepository;
+
+    public BooksServiceImpl(BooksRepository booksRepository) {
+        this.booksRepository = booksRepository;
+    }
 
     @Override
     public void insertBook(Book book) {

@@ -1,27 +1,32 @@
 package ru.otus.springcourse09.dto.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+
+import org.springframework.stereotype.Service;
 import ru.otus.springcourse09.dto.PublishingHouseDto;
 import ru.otus.springcourse09.model.PublishingHouse;
 
 import java.util.List;
 
-@Mapper
-public interface PublishingHouseMapper {
+@Service
+public class PublishingHouseMapper implements AbstractMapper<PublishingHouseDto, PublishingHouse> {
 
-    @Mappings({
-            @Mapping(source = "idPublishingHouse", target = "id"),
-            @Mapping(source = "bookSet", target = "bookDtoSet")
-    })
-    PublishingHouseDto publishHouseToPublishingHouseDto(PublishingHouse publishingHouse);
+    @Override
+    public PublishingHouse toEntity(PublishingHouseDto publishingHouseDto) {
+        return null;
+    }
 
-    @Mappings({
-            @Mapping(source = "id", target = "idPublishingHouse"),
-            @Mapping(source = "bookDtoSet", target = "bookSet")
-    })
-    PublishingHouse publishHouseDtoToPublishingHouse(PublishingHouseDto publishingHouseDto);
+    @Override
+    public PublishingHouseDto toDto(PublishingHouse publishingHouse) {
+        return null;
+    }
 
-    List<PublishingHouseDto> publishHousesToPublishingHouseDtos(List<PublishingHouse> publishingHouseList);
+    @Override
+    public List<PublishingHouse> toEntity(List<PublishingHouseDto> publishingHouseDtos) {
+        return null;
+    }
+
+    @Override
+    public List<PublishingHouseDto> toDto(List<PublishingHouse> publishingHouses) {
+        return null;
+    }
 }

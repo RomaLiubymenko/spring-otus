@@ -1,16 +1,12 @@
 package ru.otus.springcourse06.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @Table(name = "Comments")
 public class Comment {
@@ -30,6 +26,58 @@ public class Comment {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime publicationTime;
 
+    public int getIdComment() {
+        return idComment;
+    }
 
+    public void setIdComment(int idComment) {
+        this.idComment = idComment;
+    }
 
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public LocalDateTime getPublicationTime() {
+        return publicationTime;
+    }
+
+    public void setPublicationTime(LocalDateTime publicationTime) {
+        this.publicationTime = publicationTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Comment comment = (Comment) o;
+        return idComment == comment.idComment;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idComment);
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "idComment=" + idComment +
+                ", book=" + book +
+                ", text='" + text + '\'' +
+                ", publicationTime=" + publicationTime +
+                '}';
+    }
 }

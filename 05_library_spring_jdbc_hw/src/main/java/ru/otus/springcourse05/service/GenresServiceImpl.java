@@ -1,6 +1,5 @@
 package ru.otus.springcourse05.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import ru.otus.springcourse05.dao.GenresDao;
@@ -9,10 +8,13 @@ import ru.otus.springcourse05.domain.Genres;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class GenresServiceImpl implements GenresService {
 
     private final GenresDao genresDao;
+
+    public GenresServiceImpl(GenresDao genresDao) {
+        this.genresDao = genresDao;
+    }
 
     @Override
     public String insertGenre(Genres genre) {

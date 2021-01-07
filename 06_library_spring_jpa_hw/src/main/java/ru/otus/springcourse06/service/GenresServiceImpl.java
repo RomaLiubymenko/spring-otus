@@ -1,6 +1,5 @@
 package ru.otus.springcourse06.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.otus.springcourse06.domain.Genre;
 import ru.otus.springcourse06.repository.GenresRepository;
@@ -8,10 +7,13 @@ import ru.otus.springcourse06.repository.GenresRepository;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class GenresServiceImpl implements GenresService {
 
     private final GenresRepository genresRepository;
+
+    public GenresServiceImpl(GenresRepository genresRepository) {
+        this.genresRepository = genresRepository;
+    }
 
     @Override
     public void insertGenre(Genre genre) {

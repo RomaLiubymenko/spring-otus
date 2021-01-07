@@ -1,6 +1,5 @@
 package ru.otus.springcourse05.shell;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.table.Table;
@@ -11,11 +10,15 @@ import java.util.Collections;
 import java.util.List;
 
 @ShellComponent
-@RequiredArgsConstructor
 public class ControlCommandsForTablePublishingHouses {
 
     private final PublishingHousesService publishingHousesService;
     private final TableShell tableShell;
+
+    public ControlCommandsForTablePublishingHouses(PublishingHousesService publishingHousesService, TableShell tableShell) {
+        this.publishingHousesService = publishingHousesService;
+        this.tableShell = tableShell;
+    }
 
     @ShellMethod(value = "Displays the entire table PublishingHouses", key = "showPH")
     public Table showAllPublishingHouses(){

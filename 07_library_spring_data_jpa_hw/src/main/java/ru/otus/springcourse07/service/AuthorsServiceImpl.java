@@ -1,6 +1,5 @@
 package ru.otus.springcourse07.service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.otus.springcourse07.domain.Author;
@@ -10,10 +9,13 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-@RequiredArgsConstructor
 public class AuthorsServiceImpl implements AuthorsService {
 
     private final AuthorsRepository authorsRepository;
+
+    public AuthorsServiceImpl(AuthorsRepository authorsRepository) {
+        this.authorsRepository = authorsRepository;
+    }
 
     @Override
     public Author getAuthorById(int id) {

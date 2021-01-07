@@ -25,7 +25,7 @@ public class QuestionDaoImpl implements QuestionDao {
         ArrayList<Question> questionArrayList = new ArrayList<>();
         try(CSVReader reader = new CSVReader(new FileReader(path))) {
             CsvToBean csv = new CsvToBean();
-            List list = csv.parse(setColumMapping(), reader);
+            List list = csv.parse(setColumnMapping(), reader);
             for (Object object : list) {
                 questionArrayList.add((Question) object);
             }
@@ -33,7 +33,7 @@ public class QuestionDaoImpl implements QuestionDao {
         return questionArrayList;
     }
 
-    private ColumnPositionMappingStrategy setColumMapping() {
+    private ColumnPositionMappingStrategy setColumnMapping() {
         ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
         strategy.setType(Question.class);
         String[] columns = new String[] {"question", "answer"};

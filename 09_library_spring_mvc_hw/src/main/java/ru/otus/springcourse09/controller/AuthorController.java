@@ -19,21 +19,21 @@ public class AuthorController {
     private final AuthorsService authorsService;
 
     @GetMapping("/author/{id}")
-    public String viewAuthorById(@PathVariable("id") Integer id, Model model){
+    public String viewAuthorById(@PathVariable("id") Integer id, Model model) {
         AuthorDto authorDto = authorsService.getAuthorDtoById(id);
         model.addAttribute("authorDtos", authorDto);
         return "author-list";
     }
 
     @GetMapping("/author/")
-    public String viewAllAuthors(Model model){
+    public String viewAllAuthors(Model model) {
         List<AuthorDto> authorDtoList = authorsService.outputListOfAuthorsDto();
         model.addAttribute("authorDtos", authorDtoList);
         return "author-list";
     }
 
     @PostMapping("/author/add")
-    public String addAuthor(Model model, @ModelAttribute("author") AuthorDto authorDto){
+    public String addAuthor(Model model, @ModelAttribute("author") AuthorDto authorDto) {
         authorsService.insertAuthorDto(authorDto);
         return "author-add";
     }

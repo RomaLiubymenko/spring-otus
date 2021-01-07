@@ -1,6 +1,5 @@
 package ru.otus.springcourse07.shell;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.table.Table;
@@ -11,11 +10,15 @@ import java.util.Collections;
 import java.util.List;
 
 @ShellComponent
-@RequiredArgsConstructor
 public class CommandsToControlTableAuthors {
 
     private final AuthorsService authorsService;
     private final TableShell tableShell;
+
+    public CommandsToControlTableAuthors(AuthorsService authorsService, TableShell tableShell) {
+        this.authorsService = authorsService;
+        this.tableShell = tableShell;
+    }
 
     @ShellMethod(value = "Displays the entire table Authors", key = "showA")
     public Table showAllAuthors(){

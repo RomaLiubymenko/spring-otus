@@ -1,6 +1,5 @@
 package ru.otus.springcourse04.shell;
 
-import lombok.RequiredArgsConstructor;
 import org.jline.utils.AttributedString;
 import org.jline.utils.AttributedStyle;
 import org.springframework.shell.jline.PromptProvider;
@@ -8,11 +7,15 @@ import org.springframework.stereotype.Component;
 import ru.otus.springcourse04.service.StartTestingService;
 
 @Component
-@RequiredArgsConstructor
 public class CustomPromtProvider implements PromptProvider {
 
     private final StartTestingService startTestingService;
     private final ApplicationStudentTestingShell applicationShell;
+
+    public CustomPromtProvider(StartTestingService startTestingService, ApplicationStudentTestingShell applicationShell) {
+        this.startTestingService = startTestingService;
+        this.applicationShell = applicationShell;
+    }
 
     @Override
     public AttributedString getPrompt() {

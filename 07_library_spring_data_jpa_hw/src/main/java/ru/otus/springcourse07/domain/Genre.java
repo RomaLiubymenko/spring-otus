@@ -1,16 +1,10 @@
 package ru.otus.springcourse07.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @Table(name = "Genres")
 public class Genre {
@@ -24,12 +18,51 @@ public class Genre {
     private String nameGenre;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "genre", fetch = FetchType.EAGER)
-    @ToString.Exclude
     private List<Book> bookList;
 
-    @Override
-    public String toString(){
-        return String.valueOf(this.getIdGenre());
+    public int getIdGenre() {
+        return idGenre;
     }
 
+    public void setIdGenre(int idGenre) {
+        this.idGenre = idGenre;
+    }
+
+    public String getNameGenre() {
+        return nameGenre;
+    }
+
+    public void setNameGenre(String nameGenre) {
+        this.nameGenre = nameGenre;
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Genre genre = (Genre) o;
+        return idGenre == genre.idGenre;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idGenre);
+    }
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "idGenre=" + idGenre +
+                ", nameGenre='" + nameGenre + '\'' +
+                ", bookList=" + bookList +
+                '}';
+    }
 }
