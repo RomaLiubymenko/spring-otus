@@ -1,18 +1,12 @@
 package ru.otus.springcourse09.model;
 
-import lombok.*;
-
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "PublishingHouses")
-@EqualsAndHashCode(of = {"idPublishingHouse"})
 public class PublishingHouse {
 
     @Id
@@ -27,7 +21,6 @@ public class PublishingHouse {
     private String country;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "publishingHouse")
-    @ToString.Exclude
     private Set<Book> bookSet = new HashSet<>();
 
     public void addBook(Book book){
@@ -38,5 +31,60 @@ public class PublishingHouse {
     public void removeBook(Book book){
         bookSet.remove(book);
         book.setPublishingHouse(null);
+    }
+
+    public Integer getIdPublishingHouse() {
+        return idPublishingHouse;
+    }
+
+    public void setIdPublishingHouse(Integer idPublishingHouse) {
+        this.idPublishingHouse = idPublishingHouse;
+    }
+
+    public String getPublishingName() {
+        return publishingName;
+    }
+
+    public void setPublishingName(String publishingName) {
+        this.publishingName = publishingName;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Set<Book> getBookSet() {
+        return bookSet;
+    }
+
+    public void setBookSet(Set<Book> bookSet) {
+        this.bookSet = bookSet;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PublishingHouse that = (PublishingHouse) o;
+        return Objects.equals(idPublishingHouse, that.idPublishingHouse);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idPublishingHouse);
+    }
+
+    @Override
+    public String toString() {
+        return "PublishingHouse{" +
+                "idPublishingHouse=" + idPublishingHouse +
+                ", publishingName='" + publishingName + '\'' +
+                ", country='" + country + '\'' +
+                ", bookSet=" + bookSet +
+                '}';
     }
 }

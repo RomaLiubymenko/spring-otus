@@ -1,18 +1,12 @@
 package ru.otus.springcourse09.model;
 
-import lombok.*;
-
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "Authors")
-@EqualsAndHashCode(of = {"idAuthor"})
 public class Author {
 
     private String name;
@@ -32,21 +26,90 @@ public class Author {
     private String country;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "author", orphanRemoval = true)
-    @ToString.Exclude
-    private Set<Book> bookSet =  new HashSet<>();
+    private Set<Book> bookSet = new HashSet<>();
 
-    public Author() {
-    }
 
-    public void addBook(Book book){
+    public void addBook(Book book) {
         bookSet.add(book);
         book.setAuthor(this);
     }
 
-    public void removeBook(Book book){
+    public void removeBook(Book book) {
         bookSet.remove(book);
         book.setAuthor(null);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getIdAuthor() {
+        return idAuthor;
+    }
+
+    public void setIdAuthor(Integer idAuthor) {
+        this.idAuthor = idAuthor;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Set<ru.otus.springcourse09.model.Book> getBookSet() {
+        return bookSet;
+    }
+
+    public void setBookSet(Set<ru.otus.springcourse09.model.Book> bookSet) {
+        this.bookSet = bookSet;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return Objects.equals(idAuthor, author.idAuthor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idAuthor);
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "name='" + name + '\'' +
+                ", idAuthor=" + idAuthor +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", country='" + country + '\'' +
+                ", bookSet=" + bookSet +
+                '}';
+    }
 }
 
