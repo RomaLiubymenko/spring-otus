@@ -1,1 +1,1 @@
-<h4>Spring-OTUS, Любименко Роман, Системный анализ, ХАИ, 2020 г.</h4>
+### Current homeworks from the program that is conducted by *[OTUS](https://otus.ru/)*, Summer practice in the "System analysis and Management" at the National Aerospace University «Kharkiv Aviation Institute», 2020 y.
